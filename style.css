@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, #fdfcfb, #e2d1c3);
-    border:3px red solid
 }
 header {
     background: linear-gradient(to right, #4CAF50, #2E7D32);
