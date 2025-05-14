@@ -11,13 +11,14 @@ header {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-header h1 {
+header h2 {
     margin: 0;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: uppercase;
+    font-style:inherit;
 }
-header h1:hover {
-    color: red;
+header h2:hover {
+    color: rgb(35, 14, 224);
 }
 nav {
     background-color: #222;
@@ -103,7 +104,7 @@ nav a:hover, .dropdown:hover .dropbtn {
 }
 footer{
     text-align: right;
-    color:#4CAF50;
+    color:#f84e0a;
 }
 .book-btn:hover {
     background-color: #388E3C;
@@ -162,4 +163,26 @@ footer.social-footer a {
 }
 footer.social-footer a:hover {
     color: #35ca10;
+}
+form{
+    text-align: right;
+}
+.search-form{
+    display:flex;
+    max-width:700px;
+    max-height: 120px;
+    margin:auto;
+    padding-left: 20px;
+    text-align: right;
+}
+.sp{
+    background-color: white;
+    border:#35ca10 solid 2px;
+    border-radius: 5px 5px 5px 5px;
+    display:flex;
+    max-width:700px;
+    max-height: 120px;
+    margin:auto;
+    padding-left: 20px;
+    text-align: right;
 }
