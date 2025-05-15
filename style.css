@@ -177,12 +177,10 @@ form{
 }
 .sp{
     background-color: white;
-    border:#35ca10 solid 2px;
     border-radius: 5px 5px 5px 5px;
     display:flex;
     max-width:700px;
     max-height: 120px;
     margin:auto;
-    padding-left: 20px;
     text-align: right;
 }
