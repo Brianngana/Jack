@@ -183,4 +183,14 @@ form{
     max-height: 120px;
     margin:auto;
     text-align: right;
+    gap:-20px
+}
+button{
+    background-color: rgb(43, 8, 243);
+    border-radius: 5px 5px 5px 5px;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    border:red 1px solid;
+    
 }
