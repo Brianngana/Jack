@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>International Tour Booking</title>
+  <a href="index.html" style="display: inline-block; margin-bottom: 20px;">⬅️ Back to Home</a>
+  <style>
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, black);
+      padding: 2rem;
+    }
+
+    /* Container */
+    .form-box {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .form-box:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00695c;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #00695c;
+      outline: none;
+    }
+
+    button {
+      margin-top: 1.8rem;
+      width: 100%;
+      padding: 1rem;
+      background-color: #00695c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .form-box {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>🌍 Book Your International Tour</h2>
+    <form id="bookingForm">
+      <label for="fullname">👤 Full Name:</label>
+      <input type="text" id="fullname" required>
+
+      <label for="email">📧 Email Address:</label>
+      <input type="email" id="email" required>
+
+      <label for="phone">📞 Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="country">🏠 Your Country:</label>
+      <input type="text" id="country" required>
+
+      <label for="destination">🌐 Destination:</label>
+      <select id="destination" required>
+        <option value="">--Select a Destination--</option>
+        <option value="🇫🇷 France">🇫🇷 France</option>
+          <option value="🇺🇸 Usa">🇺🇸 Usa </option>
+        <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+        <option value="🇸🇬Singapore"> Singapore</option>
+        <option value="🇦🇺 Australia">🇦🇺 Australia</option>
+        
+      </select>
+
+      <label for="date">📆 Travel Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="people">👨‍👩‍👧‍👦 Number of Travelers:</label>
+      <input type="number" id="people" min="1" required>
+
+      <label for="notes">📝 Special Requests:</label>
+      <textarea id="notes"j
+    rows="3" placeholder="Any allergies,special condition,accessibility needs, or custom plans?"></textarea>
+
+      <button type="submit">✅ Submit Booking</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Booking submitted! We’ll contact you shortly.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>.

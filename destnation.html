@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExploreWorld Travels</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="#">Brilliant Tour-Trips</a>
+      </div>
+      <nav id="main-nav" class="main-nav">
+        <ul>
+          <li><a href="firstpage.html">Home</a></li>
+          <li><a href="packages/index.html">Destinations</a></li>
+          <li><a href="Form.html">Booking</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>Discover Your Next Adventure</h1>
+      <p>Hand-picked destinations, unforgettable experiences.</p>
+      <a href="#destinations" class="btn-primary">Explore Destinations</a>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section id="destinations" class="destinations-section container">
+    <h2>Popular Destinations</h2>
+    <div class="destination-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="beach">Beach</button>
+      <button class="filter-btn" data-filter="mountain">Mountain</button>
+      <button class="filter-btn" data-filter="city">City</button>
+    </div>
+    <div class="destinations-grid">
+      <!-- Example Card #1 -->
+      <div class="destination-card" data-category="beach">
+        <img src="beach.jpg" alt="Sunny Beach" />
+        <h3>Sunny Beach, Spain</h3>
+        <p>Relax on golden sands and soak up the Mediterranean sun.</p>
+      </div>
+      <!-- Example Card #2 -->
+      <div class="destination-card" data-category="mountain">
+        <img src="alpine.jpg" alt="Alpine Retreat" />
+        <h3>Alpine Retreat, Switzerland</h3>
+        <p>Experience breathtaking peaks and crisp mountain air.</p>
+      </div>
+      <!-- Example Card #3 -->
+      <div class="destination-card" data-category="city">
+        <img src="paris.jpg" alt="Paris Cityscape" />
+        <h3>Paris, France</h3>
+        <p>Discover art, culture, and cuisine in the City of Light.</p>
+      </div>
+      <!-- Add more .destination-card elements as needed -->
+    </div>
+  </section>
+
+  <!-- Booking / Contact Form Section -->
+  <section id="booking" class="booking-section container">
+    <h2>Book Your Trip</h2>
+    <form id="booking-form" class="booking-form">
+      <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" name="fullName" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="destination-select">Destination</label>
+        <select id="destination-select" name="destination" required>
+          <option value="">Select a Destination</option>
+          <option value="sunny-beach">Sunny Beach, Spain</option>
+          <option value="alpine-retreat">Alpine Retreat, Switzerland</option>
+          <option value="paris">Paris, France</option>
+          <!-- Add more <option> as you add cards -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="travel-date">Travel Date</label>
+        <input type="date" id="travel-date" name="travelDate" required />
+      </div>
+      <button type="submit" class="btn-primary">Submit Booking</button>
+    </form>
+    <div id="booking-message" class="booking-message"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Brilliant Tour-Trips. All Rights Reserved.</p>
+      <p>
+        Follow us:
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

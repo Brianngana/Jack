@@ -1,276 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRILLIANT TOUR-TRIPS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Exciting tours:Grobal Destinations</title>
+	<link rel="stylesheet" href="team.css">
 </head>
-<style>
-    body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #fdfcfb, #e2d1c3);
-}
-header {
-    background: linear-gradient(to right, #4CAF50, #2E7D32);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-header h2 {
-    margin: 0;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    font-style:inherit;
-}
-header h2:hover {
-    color: rgb(35, 14, 224);
-}
-nav {
-    background-color: #222;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 60px;
-    overflow-y: auto;
-}
-nav a, .dropbtn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #f2f2f2;
-    padding: 14px 16px;
-    text-decoration: none;
-    border: none;
-    background: none;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s ease;
-}
-nav a:hover, .dropdown:hover .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-}
-.dropdown {
-    position: relative;
-}
-.dropdown-content {
-    display: none;
-    flex-direction: column;
-    background-color: #f9f9f9;
-    width: 100%;
-    animation: fadeIn 0.3s ease-in-out;
-}
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-.dropdown-content a:hover {
-    background-color: #e0f2f1;
-}
-.dropdown:hover .dropdown-content {
-    display: flex;
-}
-.container {
-    margin-left: 220px;
-    padding: 20px;
-}
-.tour-card {
-    background: white;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-.tour-card:hover {
-    transform: translateY(-5px);
-}
-.tour-card h3 {
-    margin-top: 0;
-    color: #2E7D32;
-}
-.book-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-footer{
-    text-align: right;
-    color:#f84e0a;
-}
-.book-btn:hover {
-    background-color: #388E3C;
-}
-input, select {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.confirmation-message {
-    color: green;
-    margin-top: 10px;
-    font-weight: bold;
-    display: none;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-@media (max-width: 768px) {
-    nav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding-top: 0;
-    }
-    .container {
-        margin-left: 0;
-    }
-    .dropdown-content {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        width: 100%;
-    }
-    nav a, .dropbtn {
-        width: auto;
-        flex: 1 1 100%;
-    }
-}
-  footer.social-footer {
-    background-color: #500ccf;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-footer.social-footer a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    display: inline-block;
-}
-footer.social-footer a:hover {
-    color: #35ca10;
-}
-form{
-    text-align: right;
-}
-.search-form{
-    display:flex;
-    max-width:700px;
-    max-height: 120px;
-    margin:auto;
-    padding-left: 20px;
-    text-align: right;
-}
-.search-input{
-    flex:1;
-    padding:8px;
-    border:2px solid brown;
-    border-radius: 5px 5px 5px 5px;
-}
-.search-button{
-    background-color: #500ccf;
-    border-radius: 5px 5px 5px 5px;
-    cursor: pointer;
-    color: #d7dbd5;
-}
-</style>
 <body>
-    <!-- Header -->
-    <header>
-        <h2>BRILLIANT TOUR-TRIPS</h2>
-        <i>Travel.Experience.Enjoy</i>
-    </header>
+	<header class="Head">
+		<div class="head-content">
+			<h1>International fun tours</h1>
+			<p>
+				Brilliant tours got you covered👌💯
+			</p>
+		</div>
+				</header>
+				
+				<section id="destinations">
+				<div class="destined-place">
+				<img src="paris.jpg" alt="Paris">
+				<h2>Paris, France</h2>
+				<p>
+Be part of the Romance atmosphere💗,fashion,food and iconic landmarks from the "City of Lights"		</p>
+		 <button onclick="location.href='Form.html'">Book Now</button>
+				</div>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="#home"><i class="fas fa-home"></i> Home</a>
-        <div class="dropdown">
-            <button class="dropbtn"><i class="fas fa-map-marked-alt"></i> Destinations <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">
-                <a href="#destinations">Popular Spots</a>
-                <a href="#mountains">Mountains</a>
-                <a href="#beaches">Beaches</a>
-                <a href="#wildlife">Wildlife Safaris</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn"><i class="fas fa-box-open"></i> Packages <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">
-                <a href="packages/index.html">All Packages</a>
-                <a href="packages/index.html">Honeymoon</a>
-                <a href="#family">Family Tours</a>
-                <a href="#adventure">Adventure</a>
-            </div>
-        </div>
-        <a href="#requests"><i class="fas fa-envelope-open-text"></i> Requests</a>
-        <div class="dropdown">
-            <button class="dropbtn"><i class="fas fa-info-circle"></i> About Us <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">
-                <a href="#team"><i class="fas fa-users"></i>Team</a>
-                <a href="#story"><i class="fas-fa-book-open"></i>Our Story</a>
-                <a href="#faqs"><i class="fas-fa-question-circle"></i>FAQs</a>
-                <a href="#payment"><i class="fas-fa-credit-card"></i>Payment</a>
-                <a href="#contact"><i class="fas-fa-envelope"></i>Contact</a>
-            </div>
-        </div>
-    </nav>
-    <div class="search-container">
-  <input type="text" id="searchInput" class="search-input" placeholder="Search...">
-  <i class="fas fa-search search-icon" onclick="performSearch()"></i>
-</div>
-    <div class="container">
-        <section id="home" class="tour-card">
-            <h3>Welcome to Brilliant Tour-Trips</h3>
-            <p>Discover unforgettable tours across amazing destinations with Brilliant Tour-Trips!</p>
-        </section>
-        <!-- Sections like destinations, packages, contact, etc. would follow -->
-    </div>
+				<div class="destined-place">
+				<img src="Texas.jpeg" alt="Texas">
+				<h2>Texas Usa</h2>
+				<p>
+				Discover a city where everything is bigger:big personality and rich culture😎
+				</p>		 <button onclick="location.href='Form.html'">Book Now</button>
+			
+				</div>
 
-     <!-- Social Media Footer -->
-    <footer class="social-footer">
-        <p>Find us on:</p>
-        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
-    </footer>
-     <footer>Brilliant Tour-Trips &copy2025.All rights reserved.</footer>
-     <footer><i class="fas fa-wifi"></i>  Managed By BTT ICT services.</footer>
-     <script>
-  function performSearch() {
-    const query = document.getElementById('searchInput').value.trim();
-    if (query) {
-      alert("Searching for: " + query);
-      // Actual search logic goes here
-    } else {
-      alert("Please enter a search term.");
-    }
-  }
-</script>
-</body>
-</html>
+				<div class="destined-place">
+				<img src="Singapore.jpeg" alt="Singapore">
+				<h2>Singapore, Asia</h2>
+				<p>
+				Visit the city that never sleeps! Enjoy it's cleaniness, culture diversity and food paradise😋
+				</p>
+						 <button onclick="location.href='Form.html'">Book Now</button>
+				</div>
+
+				<script src="Script.js"></script>
+
+				<!-- Hidden destinations -->
+				<div class="destined-place hidden">
+				<img src="rome.jpg" alt="Rome">
+				<h2>Rome, Italy</h2>
+				<p>
+			Experience the delicacy of italian food👌,ancient history and architecture not forgetting the cuptivating art🎨.
+				</p>
+						 <button onclick="location.href='Form.html'">Book Now</button>
+				
+				</div>
+
+				<div class="destined-place hidden">
+				<img src="sydeny.jpg" alt="Sydney">
+				<h2>Sydney, Australia</h2>
+				<p>
+Enjoy the	stunning beaches,vibrant colours and laid-back lifestyle🤭,,oopsy don't miss the iconic opera house.</p>		
+				<button onclick="location.href='Form.html'">Book Now</button>
+				
+				</div>
+
+				</section>
+
+				<!--View More Button -->
+				<div style="text-align:center; margin: 2rem;">
+				<button id="viewMoreBtn" onclick="viewMore()">View More Destinations</button>
+				</div>
+				</html>
