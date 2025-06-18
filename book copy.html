@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tour Booking & M-PESA Payment - Brilliant Tour Trips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7ff, #c2ebff);
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 650px;
+      background: white;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007b5e;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .terms input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .terms button {
+      margin-left: 10px;
+      padding: 4px 8px;
+      font-size: 13px;
+      border: none;
+      background-color: #007b5e;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      font-size: 16px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f47;
+    }
+
+    #responseMessage {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .success {
+      background-color: #d4f5e8;
+      color: #1b684e;
+    }
+
+    .error {
+      background-color: #ffe0e0;
+      color: #b10000;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 10px;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-content h3 {
+      color: #007b5e;
+    }
+
+    .modal-content p, .modal-content ul {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        margin: 20% 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Tour Booking & M-PESA Payment</h2>
+
+  <form id="bookingForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="e.g. Jane Mwangi" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" placeholder="e.g. jane@example.com" required>
+
+    <label for="package">Select Tour Package:</label>
+    <select id="package" required>
+      <option value="">-- Choose a Package --</option>
+      <option value="Maasai Mara Adventure">Maasai Mara Adventure</option>
+      <option value="Coastal Beach Retreat">Coastal Beach Retreat</option>
+      <option value="Mt. Kenya Hike">Mt. Kenya Hike</option>
+      <option value="Nairobi City Tour">Nairobi City Tour</option>
+    </select>
+
+    <label for="mpesaCode">M-PESA Code:</label>
+    <input type="text" id="mpesaCode" placeholder="e.g. QHX3ABC123" required>
+
+    <div class="terms">
+      <input type="checkbox" id="termsCheckbox" />
+      <label for="termsCheckbox">I agree to the Terms & Conditions</label>
+      <button type="button" onclick="openModal()">View Terms</button>
+    </div>
+
+    <button type="submit">Confirm Booking</button>
+  </form>
+
+  <div id="responseMessage"></div>
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Terms and Conditions</h3>
+    <ul>
+      <li>All bookings require full payment via M-PESA.</li>
+      <li>Ensure M-PESA transaction code is entered correctly.</li>
+      <li>Refunds are only made for cancellations 48 hours prior to departure.</li>
+      <li>Clients must carry valid identification when traveling.</li>
+      <li>Brilliant Tour Trips is not liable for injury, loss, or damage during travel.</li>
+    </ul>
+    <p>For help, email: <strong>support@brillianttourtrips.com</strong></p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("bookingForm");
+  const responseMessage = document.getElementById("responseMessage");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const tourPackage = document.getElementById("package").value;
+    const mpesaCode = document.getElementById("mpesaCode").value.trim().toUpperCase();
+    const termsAccepted = document.getElementById("termsCheckbox").checked;
+
+    if (!termsAccepted) {
+      responseMessage.textContent = "❌ Please agree to the terms and conditions.";
+      responseMessage.className = "error";
+      return;
+    }
+
+    if (!/^[A-Z0-9]{10,12}$/.test(mpesaCode)) {
+      responseMessage.textContent = "❌ Invalid M-PESA code format.";
+      responseMessage.className = "error";
+      return;
+    }
+
+    // Simulate storing in localStorage
+    const bookingData = {
+      fullName,
+      email,
+      tourPackage,
+      mpesaCode,
+      time: new Date().toISOString()
+    };
+
+    localStorage.setItem("tourBooking", JSON.stringify(bookingData));
+
+    responseMessage.textContent = "✅ Booking successful! We’ll contact you shortly.";
+    responseMessage.className = "success";
+    form.reset();
+  });
+
+  function openModal() {
+    document.getElementById("termsModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("termsModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("termsModal");
+    if (event.target == modal) {
+      closeModal();
+    }
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>M-PESA Payment - Brilliant Tour Trips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7ff, #c2ebff);
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007b5e;
+    }
+
+    .steps {
+      background: #f1f1f1;
+      border-left: 5px solid #007b5e;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .steps p {
+      margin: 10px 0;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .terms input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .terms button {
+      margin-left: 10px;
+      padding: 4px 8px;
+      font-size: 13px;
+      border: none;
+      background-color: #007b5e;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f47;
+    }
+
+    #responseMessage {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .success {
+      background-color: #d4f5e8;
+      color: #1b684e;
+    }
+
+    .error {
+      background-color: #ffe0e0;
+      color: #b10000;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 10px;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-content h3 {
+      color: #007b5e;
+    }
+
+    .modal-content p, .modal-content ul {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        margin: 20% 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Confirm M-PESA Payment</h2>
+
+  <div class="steps">
+    <p><strong>1:</strong> Go to M-PESA > Lipa na M-PESA</p>
+    <p><strong>2:</strong> Select <strong>Buy Goods and Services</strong></p>
+    <p><strong>3:</strong> Enter Till Number: <strong>123456</strong></p>
+    <p><strong>4:</strong> Enter Amount: <strong>KES 500</strong></p>
+    <p><strong>5:</strong> Enter PIN and complete transaction</p>
+    <p><strong>6:</strong> Enter the M-PESA transaction code below</p>
+  </div>
+
+  <form id="paymentForm">
+    <label for="mpesaCode">M-PESA Code:</label>
+    <input type="text" id="mpesaCode" placeholder="e.g. QHX3ABC123" required />
+
+    <div class="terms">
+      <input type="checkbox" id="termsCheckbox" />
+      <label for="termsCheckbox">I agree to the Terms & Conditions</label>
+      <button type="button" onclick="openModal()">View Terms</button>
+    </div>
+
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <div id="responseMessage"></div>
+</div>
+
+<!-- Modal -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Terms and Conditions</h3>
+    <p>By submitting payment, you agree to the following:</p>
+    <ul>
+      <li>You confirm the accuracy of the M-PESA code you provide.</li>
+      <li>All payments are final unless canceled 48 hours in advance.</li>
+      <li>You agree to follow all trip instructions and safety rules.</li>
+      <li>We are not liable for personal loss, injury, or errors during your trip.</li>
+      <li>You must carry proper ID when traveling with us.</li>
+    </ul>
+    <p>For questions, contact <strong>support@brillianttourtrips.com</strong></p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("paymentForm");
+  const responseMessage = document.getElementById("responseMessage");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const code = document.getElementById("mpesaCode").value.trim().toUpperCase();
+    const termsAccepted = document.getElementById("termsCheckbox").checked;
+
+    if (!termsAccepted) {
+      responseMessage.textContent = "❌ You must accept the Terms and Conditions.";
+      responseMessage.className = "error";
+      return;
+    }
+
+    if (!/^[A-Z0-9]{10,12}$/.test(code)) {
+      responseMessage.textContent = "❌ Invalid M-PESA code. Check and try again.";
+      responseMessage.className = "error";
+      return;
+    }
+
+    localStorage.setItem("mpesaPaymentCode", code);
+    responseMessage.textContent = "✅ Payment received. We'll verify shortly.";
+    responseMessage.className = "success";
+  });
+
+  function openModal() {
+    document.getElementById("termsModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("termsModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("termsModal");
+    if (event.target == modal) {
+      closeModal();
+    }
+  };
+</script>
+
+</body>
+</html>

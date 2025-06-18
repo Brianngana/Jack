@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FAQs - Brilliant Tour Trips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f4faff;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007b5e;
+    }
+
+    .faq {
+      margin-top: 30px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+    }
+
+    .faq-question.active::after {
+      content: '-';
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .terms input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .terms button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      font-size: 13px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #proceedBtn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007b5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #proceedBtn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      color: #007b5e;
+    }
+
+    .modal-content ul {
+      padding-left: 20px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .close:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Frequently Asked Questions (FAQs)</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-question">How do I book a tour?</div>
+      <div class="faq-answer">You can book a tour by filling the booking form and making payment via M-PESA with the code provided.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I get a refund?</div>
+      <div class="faq-answer">Yes, but only if you cancel at least 48 hours before the tour departure date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is the price inclusive of meals and transport?</div>
+      <div class="faq-answer">Yes, our package prices include transport, accommodation, and meals unless stated otherwise.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How will I know my booking is confirmed?</div>
+      <div class="faq-answer">You will receive a confirmation message or email after successful booking and payment.</div>
+    </div>
+  </div>
+
+  <!-- Terms Agreement -->
+  <div class="terms">
+    <input type="checkbox" id="agreeTerms" onchange="toggleButton()">
+    <label for="agreeTerms">I agree to the Terms & Conditions</label>
+    <button onclick="openModal()">View Terms</button>
+  </div>
+
+  <button id="proceedBtn" disabled><a href="book.html">Proceed to Booking</a></button>
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Terms and Conditions</h3>
+    <ul>
+      <li>All bookings require full payment via M-PESA.</li>
+      <li>Ensure M-PESA transaction code is entered correctly.</li>
+      <li>Refunds are only made for cancellations 48 hours prior to departure.</li>
+      <li>Clients must carry valid identification when traveling.</li>
+      <li>Brilliant Tour Trips is not liable for injury, loss, or damage during travel.</li>
+    </ul>
+    <p>Contact us: <strong>support@brillianttourtrips.com</strong></p>
+  </div>
+</div>
+
+<script>
+  // FAQs toggle
+  document.querySelectorAll('.faq-question').forEach((question) => {
+    question.addEventListener('click', () => {
+      question.classList.toggle('active');
+      const answer = question.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // Terms modal
+  function openModal() {
+    document.getElementById('termsModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('termsModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('termsModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  // Toggle button
+  function toggleButton() {
+    const agree = document.getElementById("agreeTerms").checked;
+    document.getElementById("proceedBtn").disabled = !agree;
+  }
+</script>
+
+</body>
+</html>
