@@ -235,7 +235,6 @@ footer {
     background-color: var(--secondary-color);
     color: white;
     gap:20px;
-    display:flex;
     text-decoration: none;
 }
 
@@ -251,4 +250,8 @@ footer {
 }
 a{
     gap:40px;
+}
+.foot{
+    display:flex;
+    gap:35px;
 }
