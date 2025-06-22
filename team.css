@@ -85,3 +85,8 @@ header {
 #viewMoreBtn:hover {
 	background-color: #45a049;
 }
+.fam{
+	display: flex;
+	gap: 15px;
+	background-color: blue;
+}
