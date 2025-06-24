@@ -201,6 +201,61 @@ form{
     cursor: pointer;
     color: #d7dbd5;
 }
+ .search-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+
+  #placesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  #placesList li {
+    padding: 10px;
+    background: #fff;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  #placesList li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+
+  #placesList li:hover {
+    background: #e6f3ff;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .search-container {
+      padding: 10px;
+    }
+
+    #searchInput {
+      font-size: 15px;
+    }
+  }
 </style>
 <body>
     <!-- Header -->
@@ -242,11 +297,15 @@ form{
             </div>
         </div>
     </nav>
-    <form action="/search" method="GET" class="search-form">
-        <input type="text" name="query" placeholder="Search here..."
-        class="search-input">
-        <button type="submit" class="search-button"><i class="fas fa-search"></i>Search</button>
-    </form>
+<div class="search-container">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 Search destinations..."
+    onkeyup="filterPlaces()"
+  />
+  <ul id="placesList"></ul>
+</div>
     <div class="container">
         <section id="home" class="tour-card">
             <h3>Welcome to Brilliant Tour-Trips</h3>
@@ -267,5 +326,49 @@ form{
     </footer>
      <footer>Brilliant Tour-Trips &copy2025.All rights reserved.</footer>
      <footer> Managed By BTT ICT services.</footer>
+  <script>
+  // Your destination list - Add your real destinations here
+  const destinations = [
+    { name: "Amboseli National Park", link: "places/amboseli.html" },
+    { name: "Coast Region", link: "places/coast.html" },
+    { name: "Diani Beach", link: "places/diani.html" },
+    { name: "Eldoret", link: "places/eldoret.html" },
+    { name: "Fort Jesus", link: "places/fortjesus.html" },
+    { name: "Hell's Gate National Park", link: "places/hellsgate.html" },
+    { name: "Kakamega Forest", link: "places/kakamega.html" },
+    { name: "Lake Victoria", link: "places/lakevictoria.html" },
+    { name: "Maasai Mara", link: "places/maasai.html" },
+    { name: "Lake Nakuru National Park", link: "places/nakuru.html" },
+    { name: "Samburu Reserve", link: "places/samburu.html" },
+    { name: "Tsavo East & West", link: "places/tsavo.html" },
+  ];
+
+  // Sort alphabetically
+  destinations.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Render list
+  const listContainer = document.getElementById("placesList");
+  destinations.forEach(dest => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = dest.link;
+    a.textContent = dest.name;
+    li.appendChild(a);
+    listContainer.appendChild(li);
+  });
+
+  // Filter function
+  function filterPlaces() {
+    const input = document.getElementById("searchInput").value.toUpperCase();
+    const li = listContainer.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+      const a = li[i].getElementsByTagName("a")[0];
+      const textValue = a.textContent || a.innerText;
+      li[i].style.display = textValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
+    }
+  }
+</script>
+
 </body>
 </html>
