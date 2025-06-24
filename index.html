@@ -256,6 +256,44 @@ form{
       font-size: 15px;
     }
   }
+  
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 250px;
+      margin-top: 20px;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: calc(250px * 5);
+      animation: scroll 20s linear infinite;
+    }
+
+    .carousel img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 600px) {
+      .carousel img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .carousel-track {
+        width: calc(180px * 5);
+      }
+    }
 </style>
 <body>
     <!-- Header -->
@@ -306,6 +344,16 @@ form{
   />
   <ul id="placesList"></ul>
 </div>
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="Denno1.jpg" alt="denno">
+      <img src="elvn.jpg" alt="elvine">
+      <img src="Rikas.jpg" alt="rikashee">
+      <img src="MARY1~2 (1).jpg" alt="mary">
+      <img src="Gladys.jpg" alt="gladys">
+      <img src="brian1.png" alt="brian">
+    </div>
+  </div>
     <div class="container">
         <section id="home" class="tour-card">
             <h3>Welcome to Brilliant Tour-Trips</h3>
@@ -326,10 +374,10 @@ form{
     </footer>
      <footer>Brilliant Tour-Trips &copy2025.All rights reserved.</footer>
      <footer> Managed By BTT ICT services.</footer>
-  <script>
-  // Your destination list - Add your real destinations here
+
+<script>
   const destinations = [
-    { name: "Amboseli National Park", link: "places/amboseli.html" },
+    { name: "Amboseli National Park", link: "places/Amboseli.html" },
     { name: "Coast Region", link: "places/coast.html" },
     { name: "Diani Beach", link: "places/diani.html" },
     { name: "Eldoret", link: "places/eldoret.html" },
@@ -346,8 +394,9 @@ form{
   // Sort alphabetically
   destinations.sort((a, b) => a.name.localeCompare(b.name));
 
-  // Render list
   const listContainer = document.getElementById("placesList");
+
+  // Render list
   destinations.forEach(dest => {
     const li = document.createElement("li");
     const a = document.createElement("a");
@@ -357,18 +406,25 @@ form{
     listContainer.appendChild(li);
   });
 
-  // Filter function
   function filterPlaces() {
     const input = document.getElementById("searchInput").value.toUpperCase();
     const li = listContainer.getElementsByTagName("li");
+    let anyMatch = false;
 
     for (let i = 0; i < li.length; i++) {
       const a = li[i].getElementsByTagName("a")[0];
       const textValue = a.textContent || a.innerText;
-      li[i].style.display = textValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
+      if (textValue.toUpperCase().indexOf(input) > -1) {
+        li[i].style.display = "";
+        anyMatch = true;
+      } else {
+        li[i].style.display = "none";
+      }
     }
+
+    // Show or hide list depending on matches and input
+    listContainer.classList.toggle("hidden-list", !anyMatch || input === "");
   }
 </script>
-
 </body>
 </html>

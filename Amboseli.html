@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diani Beach</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0077b6;
+    }
+
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 250px;
+      margin-top: 20px;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: calc(250px * 5);
+      animation: scroll 20s linear infinite;
+    }
+
+    .carousel img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 600px) {
+      .carousel img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .carousel-track {
+        width: calc(180px * 5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Amboseli</h1>
+</header>
+
+<div class="container">
+  <h2>About Amboseli National park</h2>
+  <p>
+    Amboseli National park is a pristine stretch of white sand located along the south coast of Kenya. 
+    It's known for its crystal-clear waters, coral reefs, luxury resorts, and water sports.
+    A top destination for tourists seeking relaxation and adventure in one of Africa’s most beautiful beach towns.
+  </p>
+
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="Amboseli 1.jpg" alt="Diani Beach 1">
+      <img src="amboseli 2.jpg" alt="Diani Beach 2">
+      <img src="amboseli 3.jpg" alt="Diani Beach 3">
+      <img src="amboseli 6.jpg" alt="Diani Beach 4">
+      <img src="amboseli 4.jpg" alt="Diani Beach 5">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
